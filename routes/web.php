@@ -25,7 +25,7 @@ Route::get('/bookings', [BookingController::class,'index']);
 Route::get('/booking/status/{id}', [BookingController::class,'status']);
 
 // Home redirect
-Route::get('/', function() {
+Route::get('/dashboard', function() {
     return redirect('/dashboard');
 });
 
