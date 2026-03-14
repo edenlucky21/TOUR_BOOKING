@@ -7,6 +7,13 @@ use App\Models\Booking;
 use App\Http\Controllers\TourController;
 use App\Http\Controllers\BookingController;
 
+// Dashboard
+Route::get('/', function() {
+    $tours = Tour::count();
+    $bookings = Booking::count();
+    $guides = Guide::count();
+    return view('dashboard', compact('tours','bookings','guides'));
+});
 
 
 // Tour routes
