@@ -1,31 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Tours</title>
-</head>
-
-<body>
-
-<a href="/dashboard">Dashboard</a> |
-<a href="/tours">Tours</a> |
-<a href="/guides">Guides</a> |
-<a href="/bookings">Bookings</a>
-
-<hr>
-
-<h2>Available Tours</h2>
-
-<a href="/tours/create">Add New Tour</a>
-
-<br><br>
-
-<form action="/tours/search" method="GET">
-<input type="text" name="search" placeholder="Search tour or location">
-<button type="submit">Search</button>
-</form>
-
-<br>
-
 <table class="table table-bordered table-striped">
 
 <tr>

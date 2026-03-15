@@ -41,4 +41,5 @@ Route::prefix('book')->group(function () {
 });
 
 Route::get('/bookings', [BookingController::class, 'index'])->name('bookings.index');
-Route::get('/booking/status/{id}', [BookingController::class, 'status'])->name('booking.status');
+Route::get('/booki
+ng/status/{id}', [BookingController::class, 'status'])->name('booking.status');

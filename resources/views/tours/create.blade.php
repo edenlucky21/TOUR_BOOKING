@@ -1,39 +1,29 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Add Tour</title>
-</head>
+<div class="mb-3">
 
-<body>
+<label class="form-label">Tour Name</label>
+<input type="text" class="form-control" name="tour_name">
 
-<a href="/dashboard">Dashboard</a> |
-<a href="/tours">Tours</a> |
-<a href="/guides">Guides</a> |
-<a href="/bookings">Bookings</a>
+</div>
 
-<hr>
+<div class="mb-3">
 
-<h2>Add New Tour</h2>
+<label class="form-label">Location</label>
+<input type="text" class="form-control" name="location">
 
-<form action="/tours/store" method="POST">
+</div>
 
-@csrf
+<div class="mb-3">
 
-<label>Tour Name</label><br>
-<input type="text" name="tour_name"><br><br>
+<label class="form-label">Description</label>
+<textarea class="form-control" name="description"></textarea>
 
-<label>Location</label><br>
-<input type="text" name="location"><br><br>
+</div>
 
-<label>Description</label><br>
-<textarea name="description"></textarea><br><br>
+<div class="mb-3">
 
-<label>Price</label><br>
-<input type="number" name="price"><br><br>
+<label class="form-label">Price</label>
+<input type="number" class="form-control" name="price">
 
-<button type="submit">Save Tour</button>
+</div>
 
-</form>
-
-</body>
-</html>
+<button class="btn btn-success">Save Tour</button>
