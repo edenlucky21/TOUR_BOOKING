@@ -7,39 +7,38 @@ use App\Models\Booking;
 use App\Http\Controllers\TourController;
 use App\Http\Controllers\BookingController;
 
-// Dashboard
-Route::get('/', function() {
-    $tours = Tour::count();
-    $bookings = Booking::count();
-    $guides = Guide::count();
-    return view('dashboard', compact('tours','bookings','guides'));
-});
-
-
-// Tour routes
-Route::get('/tours', [TourController::class,'index']);
-Route::get('/tours/create', [TourController::class,'create']);
-Route::post('/tours/store', [TourController::class,'store']);
-Route::get('/tours/edit/{id}', [TourController::class,'edit']);
-Route::post('/tours/update/{id}', [TourController::class,'update']);
-Route::get('/tours/delete/{id}', [TourController::class,'destroy']);
-Route::get('/tours/search', [TourController::class,'search']);
-
-// Booking routes
-Route::get('/book/{tour_id}', [BookingController::class,'create']);
-Route::post('/book/store', [BookingController::class,'store']);
-Route::get('/bookings', [BookingController::class,'index']);
-Route::get('/booking/status/{id}', [BookingController::class,'status']);
-
-// Home redirect
-Route::get('/', function() {
-    return redirect('/home');
-});
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application.
+|
+*/
 
 // Dashboard
 Route::get('/', function() {
     $tours = Tour::count();
     $bookings = Booking::count();
     $guides = Guide::count();
-    return view('dashboard', compact('tours','bookings','guides'));
+    return view('dashboard', compact('tours', 'bookings', 'guides'));
 });
+// Tour Routes
+Route::prefix('tours')->group(function () {
+    Route::get('/', [TourController::class, 'index'])->name('tours.index');
+    Route::get('/create', [TourController::class, 'create'])->name('tours.create');
+    Route::post('/store', [TourController::class, 'store'])->name('tours.store');
+    Route::get('/edit/{id}', [TourController::class, 'edit'])->name('tours.edit');
+    Route::post('/update/{id}', [TourController::class, 'update'])->name('tours.update');
+    Route::get('/delete/{id}', [TourController::class, 'destroy'])->name('tours.destroy');
+    Route::get('/search', [TourController::class, 'search'])->name('tours.search');
+});
+
+// Booking Routes
+Route::prefix('book')->group(function () {
+    Route::get('/{tour_id}', [BookingController::class, 'create'])->name('book.create');
+    Route::post('/store', [BookingController::class, 'store'])->name('book.store');
+});
+
+Route::get('/bookings', [BookingController::class, 'index'])->name('bookings.index');
+Route::get('/booking/status/{id}', [BookingController::class, 'status'])->name('booking.status');
